@@ -1,0 +1,69 @@
+.ta-c {
+  text-align: center;
+}
+
+.ta-r {
+  text-align: right;
+}
+
+.ta-l {
+  text-align: left;
+}
+
+.overwrite-title {
+  color: #333;
+  text-align: center;
+  line-height: 2.4em;
+  font-weight: bold;
+}
+
+.weui-input {
+  font-family: 'PingFang-SC-Medium';
+  font-size: 1em !important;
+}
+
+.login .weui-cells {
+  background-color: transparent;
+  color: #fff;
+}
+
+.share .weui-cells,
+.own-info .weui-cells {
+  margin-top: 0.7em !important;
+}
+
+.own .weui-cells,
+.change-password .weui-cells,
+.balance .weui-cells,
+.wallet .weui-cells {
+  margin-top: 0 !important;
+}
+
+.balance .vux-label-desc {
+  color: #999 !important;
+  font-size: 1em !important;
+}
+
+.balance .weui-cell__ft {
+  font-size: 1em;
+  color: #000;
+}
+
+.vux-label {
+  font-family: 'PingFang-SC-Medium';
+  font-size: 1em;
+  color: #000;
+}
+
+.share .friends .weui-cell {
+  padding: 0.4em 1em;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.weui-cell {
+  padding: 0.8em 1em !important;
+}
+
+.weui-cell:before {
+  left: 0 !important;
+}
