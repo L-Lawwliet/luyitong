@@ -6,7 +6,7 @@
   @touchend="touchEnd($event)"
   @scroll="(onInfinite || infiniteLoading) ? onScroll($event) : undefined">
     <section class="inner" :style="{ transform: 'translate3d(0, ' + top + 'px, 0)' }">
-      <header class="pull-refresh">
+      <header class="pull-refresh" :style="{color:tipColor}">
         <slot name="pull-refresh">
            <span class="down-tip">下拉更新</span>
            <span class="up-tip">松开更新</span>
@@ -51,6 +51,10 @@ export default {
     loadText: {
       type: String,
       default: ''
+    },
+    tipColor: {
+      type: String,
+      default: '#000'
     }
   },
   data() {

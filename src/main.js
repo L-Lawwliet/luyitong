@@ -1,22 +1,23 @@
 import 'element-ui/lib/theme-chalk/index.css'
 import 'babel-polyfill'
-import VueClipboard from 'vue-clipboard2'
+
 import App from './App'
 import ElementUI from 'element-ui'
 import Es6Promise from 'es6-promise'
-import FastClick from 'fastclick'
+// import FastClick from 'fastclick'
 import {
     TransferDom
 } from 'vux'
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
+import VueClipboard from 'vue-clipboard2'
 import VueRouter from 'vue-router'
 import router from './router'
 Vue.use(VueClipboard)
 Es6Promise.polyfill();
 Vue.config.productionTip = false
-FastClick.attach(document.body);
+// FastClick.attach(document.body);
 Vue.use(ElementUI)
 Vue.use(VueRouter)
 router.beforeEach((to, from, next) => {

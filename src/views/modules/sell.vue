@@ -8,7 +8,7 @@
       </div>
     </x-header>
     <div class="sell-wrapper">
-      <scroll :on-refresh="onRefresh" :on-infinite="onInfinite" :loadText="loadText">
+      <scroll :on-refresh="onRefresh" :on-infinite="onInfinite" :loadText="loadText" tipColor="#fff">
         <el-row class="sell-item-wrapper" v-for="item in goods" :key="item.id">
           <el-row>
             <el-col :span="15" class="name product-name">{{item.PRODUCT_NAME}}</el-col>
@@ -107,6 +107,7 @@
         tips: "",
         loading: false,
         showDialog: false,
+        noData: false
       };
     },
     mounted() {
@@ -124,8 +125,15 @@
           this.loadText = '';
           if (callback) callback();
           if (res.data.msg_code === 'success') {
+            this.noData = false;
             if (this.pageIndex === 1) {
               this.goods = res.data.result;
+            } else if (res.data.result.length === 0) {
+              this.noData = true;
+              this.$message({
+                type: 'info',
+                message: '没有更多了'
+              })
             } else {
               this.goods = this.goods.concat(res.data.result);
             }
@@ -150,6 +158,7 @@
       },
       onInfinite(callback) {
         this.loadText = '加载中';
+        if (this.loading || this.noData) return;
         this.pageIndex++;
         this.getSellProducts(callback);
       },
@@ -165,19 +174,8 @@
         this.orderGoods = [];
         this.showAdd = true;
       },
-      getGoods() {
-        if (this.code === '') return this.tips = '请获取商品';
-        api.release({
-          CODE: this.code
-        }).then(res => {
-          if (res.data.msg_code === 'success') {
-            this.getSellProducts();
-            this.showAdd = false;
-          } else {
-            this.tips = res.data.msg;
-          }
-        });
-      },
+
+      // 获取发布商品
       getOrders() {
         if (this.code === '') return this.tips = '请输入识别码';
         this.orderGoods = [];
@@ -187,11 +185,34 @@
           if (res.data && res.data.result) {
             this.tips = '';
             this.orderGoods = res.data.result;
+            this.$message({
+              type: 'success',
+              message: '获取发布商品成功！'
+            });
           } else {
             this.tips = '没有商品';
           }
         });
-      }
+      },
+
+      // 发布商品
+      getGoods() {
+        if (this.code === '') return this.tips = '请获取商品';
+        api.release({
+          CODE: this.code
+        }).then(res => {
+          if (res.data.msg_code === 'success') {
+            this.$message({
+              type: 'success',
+              message: '发布成功！'
+            });
+            this.getSellProducts();
+            this.showAdd = false;
+          } else {
+            this.tips = res.data.msg;
+          }
+        });
+      },
     },
     components: {
       XHeader,

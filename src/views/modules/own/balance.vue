@@ -18,7 +18,7 @@
       </div>
       <div class="detail">收支明细</div>
       <group>
-        <cell v-for="item in records" :key="item.id" :title="item.title" :inline-desc="fmtDate(item.updatedatetime)" :value="'￥'+item.changeWorth"></cell>
+        <cell v-for="item in records" :key="item.id" :title="item.title" :inline-desc="fmtDate(item.updatedatetime)" :value="item.changeWorth>0?('￥'+item.changeWorth):('￥'+(-item.changeWorth))"></cell>
       </group>
     </div>
 
