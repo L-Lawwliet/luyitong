@@ -1,7 +1,7 @@
 import http from './../util/http';
 
-// let lyt = '/lyt';
-let lyt = '';
+let lyt = '/lyt';
+// let lyt = '';
 class api {
   constructor() {};
   // 用户登录

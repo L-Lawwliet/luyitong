@@ -53,6 +53,15 @@ export default {
       })
     },
     withdraw() {
+      let nowDate = new Date().getHours();
+      if (nowDate < 9 || nowDate > 14) {
+        this.tips = '提现时间为早上9点-下午3点';
+        this.show = true;
+        setTimeout(() => {
+          this.show = false;
+        }, 2000);
+        return false;
+      }
       if (this.balance === 0) {
         this.tips = '余额为0';
         this.show = true;

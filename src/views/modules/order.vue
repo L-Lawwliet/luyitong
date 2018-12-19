@@ -13,7 +13,7 @@
             <el-col :span="12" class="primary">
               <span v-if="item.STATUS==='0'">未发布</span>
               <span v-if="item.STATUS==='1'">已发布</span>
-              <span v-if="item.STATUS==='3'">已完成</span>
+              <span v-if="item.STATUS==='2'">已完成</span>
             </el-col>
           </el-row>
           <el-row class="name">{{item.PRODUCT_NAME}}</el-row>
