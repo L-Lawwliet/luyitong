@@ -111,6 +111,7 @@ export default {
         return false;
       }
       this.hasError = false;
+      this.tips = '';
       api.getCodeForPhone({ PHONE: this.phone }).then(res => {
         if (res.data.code === 100) {
           this.canSend = false;
@@ -178,6 +179,10 @@ export default {
   border-top: 0 !important;
   border-bottom: 1px solid #d9d9d9 !important;
   left: 15px !important;
+}
+.success {
+  color: green;
+  margin: 1em 0 0 1em;
 }
 .error {
   color: red;
